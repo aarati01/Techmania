@@ -92,26 +92,17 @@
 
 /* css for the Create page  */
 
-/* .container{
-     width: 100%;
-    height: 100vh;
-    background-image: url(../images/background.png);
-}
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color:#eaeaea;
-} */
 
-
-
-/* General container settings */
 .container {
-    width: 100%;
-    height: 100%;
+    width: 98vw;
+    height: 96vh;
     background-image: url(../images/background.png);
-    /* background-position: center; */
-    background-size: 80%; 
+    overflow: auto;
+
+    background-position: center;
+    /* background-size: 80%;  */
+    position: relative;
+
 
     background-size: cover;
     display: flex;
@@ -119,7 +110,6 @@ h1 {
     align-items: center;
 }
 
-/* Styling for the Create New Product section */
 .newProduct {
     max-width: 400px;
     width: 100%;
@@ -129,28 +119,24 @@ h1 {
     text-align: center;
 }
 
-/* Title styling */
 .newProduct h1 {
     font-size: 2em;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Styling for the logo image */
 .createImage img {
     max-width: 100%;
     height: 30vh;
     margin-bottom:  60px 20px;
 }
 
-/* Form styling */
 .addUser form {
     width: 100%;
     height: 20%;
     margin-bottom: 10%;
 }
 
-/* Styling for form entry fields */
 .entry-group {
     display: flex;
     flex-direction: column;
@@ -190,7 +176,6 @@ h1 {
     margin-left: 1em;
 }
 
-/* Button styling */
 .product-buttons {
     display: flex;
     justify-content: space-between;
@@ -213,7 +198,6 @@ h1 {
     background-color: #e68900;
 }
 
-/* Reset button styles */
 .product-buttons button[type="reset"] {
     background-color: #f44336;
 }
@@ -222,12 +206,10 @@ h1 {
     background-color: #d32f2f;
 }
 
-/* Adjustments for the page layout */
 .addUser {
     width: 100%;
 }
 
-/* Input & textarea fields for better user experience */
 .entry-field input:focus, .entry-field textarea:focus {
     background-color: #f1f1f1;
 }
@@ -237,7 +219,6 @@ h1 {
     resize: vertical;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .newProduct {
         padding: 1.5em;

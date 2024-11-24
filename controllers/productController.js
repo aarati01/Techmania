@@ -7,7 +7,7 @@ module.exports = {
   addProduct: async function (req, res) {
     const { pId, pName, pDescription, pCategory, pStock, pPrice, pImage } =
       req.body;
-    const newProduct = new ProductModel({
+    const newProduct = new productModel({
       pId,
       pName,
       pDescription,
@@ -16,7 +16,20 @@ module.exports = {
       pPrice,
       pImage,
     });
-    await newProduct.save();
-    console.log("Product added successfully!");
+    try {
+      await newProduct.save();
+      console.log("Product added successfully!");
+
+      return res.status(200).render("create", {
+        successMessage: "Product added successfully!",
+        errorMessage: null,
+      });
+    } catch (error) {
+      console.error("Error adding product:", error);
+      return res.status(500).render("create", {
+        errorMessage:
+          "There was an error adding the product, please try again.",
+      });
+    }
   },
 };

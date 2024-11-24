@@ -9,7 +9,7 @@
     ></script>
 
     <link rel="stylesheet" href="../public/css/style.css" />
-    <title>Document</title>
+    <title>Create New Product</title>
   </head>
   <body>
     <div class="container">
@@ -18,8 +18,20 @@
         <div class="createImage">
           <img src="../public/images/Logo.png" alt="logo" />
         </div>
+
+        <!-- <% if (successMessage) { %>
+        <div class="alert alert-success">
+          <p><%= successMessage %></p>
+        </div>
+        <% } %> <% if (errorMessage) { %>
+        <div class="alert alert-danger">
+          <p><%= errorMessage %></p>
+        </div>
+        <% } %> -->
+
         <div class="addUser">
-          <form method="post" action="addUser">
+          <form method="post" action="/addProduct">
+            <!-- Ensure action matches your route -->
             <div class="entry-group">
               <div class="entry-field" id="pIdField">
                 <i class="fa-solid fa-barcode"></i>
