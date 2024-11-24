@@ -59,6 +59,7 @@ app.get('/', userController.homepage);
 app.get('/:file', isAuthenticated, userController.otherfiles);
 app.get('/:folder/:file', isAuthenticated, userController.otherpages);
 app.post('/validate',userController.validation);
+app.post('/delete',productController.deleteProduct);
 
 
 app.use((err, req, res, next) => {
