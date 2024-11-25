@@ -20,10 +20,11 @@ module.exports = {
       await newProduct.save();
       console.log("Product added successfully!");
 
-      return res.status(200).render("create", {
-        successMessage: "Product added successfully!",
-        errorMessage: null,
-      });
+      // Store success message in session
+      req.session.successMessage = "Product added successfully!";
+
+      // Redirect to the same page to display the success message
+      return res.redirect("/addProduct");
     } catch (error) {
       console.error("Error adding product:", error);
       return res.status(500).render("create", {

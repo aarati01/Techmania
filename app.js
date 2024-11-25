@@ -60,11 +60,25 @@ app.use((req, res, next) => {
   next();
 });
 
+
+//get the addProduct link
+app.get("/addProduct", (req, res) => {
+  const successMessage = req.session.successMessage || null;
+  req.session.successMessage = null;
+  res.render("create", { successMessage });
+});
+
+app.get("/:file", function (req, res) {
+  const filePath = path.join(__dirname, req.params.file);
+  return res.render(req.params.file);
+});
+
 app.get("/", userController.homepage);
+app.post("/addProduct", productController.addProduct);
+
 app.get("/:file", isAuthenticated, userController.otherfiles);
 app.get("/:folder/:file", isAuthenticated, userController.otherpages);
 app.post("/validate", userController.validation);
-app.post("/addProduct", productController.addProduct);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
