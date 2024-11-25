@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/product.css">
-    <title>Document</title>
+    <title>Delete Product</title>
 </head>
 <body class="product-body">
     <h2 class="product-heading">Delete Product</h2>
+    
+    <!-- Display error message -->
+    <% if (errorMessage) { %>
+        <div class="error-message" style="color: red; margin-bottom: 1em;">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <!-- Display success message -->
+    <% if (successMessage) { %>
+        <div class="success-message" style="color: green; margin-bottom: 1em;">
+            <p><%= successMessage %></p>
+        </div>
+    <% } %>
+
     <form action="/delete" method="post" class="product-form">
         <label for="pID" class="product-header-label">Are you sure you want to delete this Product?</label>
         
         <div class="product-form-body">
             <label class="product-label">Enter Product ID:</label>
-            <input type="text" id="pID" name="pID" class="product-input"/><br>
+            <input type="text" id="pID" name="pID" class="product-input" required /><br>
         </div>
         
         <button type="submit" class="product-btn">Delete</button>
