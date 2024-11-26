@@ -60,9 +60,8 @@ app.use((req, res, next) => {
   next();
 });
 
-
 //get the addProduct link
-app.get("/addProduct", (req, res) => {
+app.get("/addProduct", isAuthenticated, (req, res) => {
   const successMessage = req.session.successMessage || null;
   req.session.successMessage = null;
   res.render("create", { successMessage });
