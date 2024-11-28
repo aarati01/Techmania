@@ -79,6 +79,17 @@ app.get("/delete", isAuthenticated, (req, res) => {
 
 app.post("/delete", productController.deleteProduct);
 
+// Route to render the update.ejs page
+app.get("/update", isAuthenticated, (req, res) => {
+  res.render("update", {
+    errorMessage: null,
+    successMessage: null,
+  });
+});
+
+// Route to handle product updates
+app.post("/update", productController.updateProduct);
+
 app.get("/:file", isAuthenticated, userController.otherfiles);
 app.get("/:folder/:file", isAuthenticated, userController.otherpages);
 app.post("/validate", userController.validation);
