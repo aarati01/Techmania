@@ -184,7 +184,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
-    gap:190px;
+    gap:50px;
 }
 
 .product-buttons button {
@@ -192,12 +192,12 @@
     background: yellow;
     color: black;
     padding: 0.8em;
-    border: black
-    ;
+    border: black;
     border-radius: 0.5em;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 172px;
 }
 
 .product-buttons button:hover {
@@ -205,11 +205,11 @@
 }
 
 .product-buttons button[type="reset"] {
-    background-color: #f44336;
+    background: yellow;
 }
 
 .product-buttons button[type="reset"]:hover {
-    background-color: #d32f2f;
+    background: rgb(145, 145, 17);
 }
 
 .addUser {
@@ -236,286 +236,4 @@
 
     
 }
-
-/* product css */
-/* General body styles */
-.product-body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1; 
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Heading styles */
-.product-heading {
-    color: black; 
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Form container styles */
-.product-form {
-    background-color: #ffffff; 
-    padding: 30px;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    width: 300px;
-}
-
-.product-form-body {
-    margin-bottom: 10px;
-    align-items: center;
-    display: flex;
-}
-
-/* Label styles */
-.product-header-label {
-    font-size: large;
-    letter-spacing: 1.1px;
-    color: #333; 
-    display: block;
-    margin-bottom: 8px;
-}
-.product-label{
-    float: left;
-    width: 45%;
-    font-size: medium;
-}
-
-/* Input field styles */
-.product-input {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-/* Button styles */
-.product-btn {
-    background-color: yellow; 
-    color: black;
-    padding: 10px 20px;
-    border: 2px solid black;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Button hover effect */
-.product-btn:hover {
-    background-color: #d88c18; 
-}
-
-/* Adjusting for smaller screens */
-@media (max-width: 480px) {
-    .product-form {
-        width: 60%; 
-    }
-}
-
-/* css for the product page */
-/* General styles for body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f1f1f1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Container styles */
-.container {
-    width: 98vw;
-    max-height: 100vh;
-    overflow-y: auto;
-    background-image: url(../images/background.png);
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Product form container */
-.newProduct {
-    width: 100%;
-    max-width: 400px;
-    padding: 2em;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
-    text-align: center;
-}
-
-/* Title styles */
-.newProduct h1 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Success message styling */
-.success-message {
-    color: green;
-    margin-bottom: 1em;
-}
-
-/* Form input field styles */
-.entry-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
-.entry-field {
-    width: 100%;
-    background-color: #f5f5f5;
-    margin: 1em 0;
-    border-radius: 0.5em;
-    display: flex;
-    align-items: flex-start;
-    padding: 0.75em;
-    transition: max-height 0.1s;
-}
-
-.entry-field input,
-.entry-field textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 0.75em 1em;
-    display: block;
-    border-radius: 0.5em;
-    font-size: 14px;
-}
-
-.entry-field label {
-    color: #333;
-    font-weight: bold;
-    margin-right: 1em;
-}
-
-.entry-field i {
-    color: #999;
-    margin-left: 1em;
-}
-
-/* Submit and reset button styling */
-
-
-
-/* General button styling */
-button {
-    background-color: yellow;
-    color: black;
-    padding: 12px 20px;
-    border: 2px solid black;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-/* Button hover effect */
-button:hover {
-    background-color: #e6c800; 
-    border-color: #cc9900;
-    color: white; 
-}
-
-/* Submit and Reset button alignment */
-.product-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px; 
-}
-
-
-
-
-/* Styling for input focus */
-.entry-field input:focus, .entry-field textarea:focus {
-    background-color: #f1f1f1;
-}
-
-/* Textarea height for better view */
-.entry-field textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-    .newProduct {
-        padding: 1.5em;
-    }
-
-    .product-buttons {
-        flex-direction: column;
-    }
-}
-
-/* Specific product form styles */
-.product-form {
-    background-color: #ffffff;
-    padding: 30px;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-.product-heading {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.product-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-/* .product-buttons{
-    background-color: yellow;
-    color: black;
-    padding: 10px 20px;
-    border: 2px solid black;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-} */
-
-/* .product-btn:hover {
-    background-color: #d88c18;
-} */
-
-/* Adjust for smaller screens */
-@media (max-width: 480px) {
-    .product-form {
-        width: 60%;
-    }
-}
-
-
 
