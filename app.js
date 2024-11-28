@@ -60,12 +60,30 @@ app.use((req, res, next) => {
   next();
 });
 
-//get the addProduct link
+app.get("/", userController.homepage);
+
 app.get("/addProduct", isAuthenticated, (req, res) => {
   const successMessage = req.session.successMessage || null;
   req.session.successMessage = null;
   res.render("create", { successMessage });
 });
+
+app.post("/addProduct", productController.addProduct);
+
+// Route to render the delete.ejs page
+app.get("/delete", isAuthenticated, (req, res) => {
+  res.render("delete", {
+    errorMessage: null,
+    successMessage: null,
+  });
+});
+app.post("/delete", productController.deleteProduct);
+
+app.get("/:file", isAuthenticated, userController.otherfiles);
+app.get("/:folder/:file", isAuthenticated, userController.otherpages);
+app.post("/validate", userController.validation);
+
+//get the addProduct link
 
 app.get("/:file", function (req, res) {
   const filePath = path.join(__dirname, req.params.file);
@@ -73,7 +91,6 @@ app.get("/:file", function (req, res) {
 });
 
 app.get("/", userController.homepage);
-app.post("/addProduct", productController.addProduct);
 
 app.get("/:file", isAuthenticated, userController.otherfiles);
 app.get("/:folder/:file", isAuthenticated, userController.otherpages);
