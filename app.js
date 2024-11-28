@@ -4,12 +4,6 @@ var mongoose = require("mongoose");
 var path = require("path");
 var bodyParser = require("body-parser");
 var session = require("express-session");
-// This file to declare all the folders,  all the relations
-var express = require("express");
-var mongoose = require("mongoose");
-var path = require("path");
-var bodyParser = require("body-parser");
-var session = require("express-session");
 
 var app = express();
 
@@ -21,14 +15,8 @@ app.use(bodyParser.json());
 app.use(
   session({
     secret: "TechManiaKey123",
-app.use(
-  session({
-    secret: "TechManiaKey123",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
-  })
-);
     cookie: { secure: false },
   })
 );
@@ -38,8 +26,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
 
 // This two lines to specify where are the views and what template we are using
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -52,17 +38,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/techmania", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-//DB Connection with the url to connect with the name of the DB
-mongoose.connect("mongodb://127.0.0.1:27017/techmania", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
 const db = mongoose.connection;
 db.once("open", function () {
   console.log("We are connected..");
-db.once("open", function () {
-  console.log("We are connected..");
-});
+
 
 // Middleware to check if the user is logged
 function isAuthenticated(req, res, next) {
@@ -81,8 +60,6 @@ const productController = require("./controllers/productController");
 
 // To print the type of request that we are receiving
 app.use((req, res, next) => {
-  console.log(`Request received: ${req.method} ${req.url}`);
-  next();
   console.log(`Request received: ${req.method} ${req.url}`);
   next();
 });
@@ -139,6 +116,7 @@ app.get("/", userController.homepage);
 app.get("/:file", isAuthenticated, userController.otherfiles);
 app.get("/:folder/:file", isAuthenticated, userController.otherpages);
 app.post("/validate", userController.validation);
+
 //route to render seeAllProducts page
 app.get("/seeAllProducts", async (req, res) => {
   try {
@@ -167,12 +145,8 @@ app.post("/validate", userController.validation);
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something went wrong!");
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
 });
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000/");
-  console.log("Server running on http://localhost:3000/");
 });
-

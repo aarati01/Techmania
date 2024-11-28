@@ -26,6 +26,8 @@ module.exports = {
         })
     },
 
+    
+
     otherpages: function(req, res) {
         console.log("Other pages ");
 
