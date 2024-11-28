@@ -63,4 +63,40 @@ module.exports = {
       });
     }
   },
+  updateProduct: async function (req, res) {
+    const { pID, pName, pDescription, pCategory, pStock, pPrice } = req.body;
+
+    try {
+      const product = await productModel.findOne({ pId: pID });
+
+      if (!product) {
+        console.log("Product not found!");
+        return res.status(404).render("update", {
+          errorMessage: "Product ID not found!",
+          successMessage: null,
+        });
+      }
+
+      // Update fields only if new values are provided
+      if (pName) product.pName = pName;
+      if (pDescription) product.pDescription = pDescription;
+      if (pCategory) product.pCategory = pCategory;
+      if (pStock) product.pStock = parseInt(pStock);
+      if (pPrice) product.pPrice = parseFloat(pPrice);
+
+      await product.save();
+
+      console.log("Product updated successfully:", product);
+      return res.status(200).render("update", {
+        errorMessage: null,
+        successMessage: "Product updated successfully!",
+      });
+    } catch (error) {
+      console.error("Error updating product:", error);
+      return res.status(500).render("update", {
+        errorMessage: "Server error! Unable to update product.",
+        successMessage: null,
+      });
+    }
+  },
 };

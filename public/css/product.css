@@ -1,12 +1,19 @@
 /* General body styles */
 .product-body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1; 
-    margin: 0;
-    padding: 0;
+    
+
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/background.png);
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
 }
 
 /* Heading styles */
@@ -23,7 +30,8 @@
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    width: 300px;
+    width: 399px;
+    height: 35vh;
 }
 
 .product-form-body {
@@ -72,6 +80,15 @@
 .product-btn:hover {
     background-color: #d88c18; 
 }
+/* Error and success message styles */
+.error-message,
+.success-message {
+    text-align: center; /* Center text horizontally */
+    color: inherit; /* Use the color already applied (red/green) */
+    font-weight: bold; /* Make messages more prominent */
+    margin-bottom: 1em;
+}
+
 
 /* Adjusting for smaller screens */
 @media (max-width: 480px) {

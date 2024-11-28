@@ -72,11 +72,11 @@ app.post("/addProduct", productController.addProduct);
 
 // Route to render the delete.ejs page
 app.get("/delete", isAuthenticated, (req, res) => {
-  res.render("delete", {
-    errorMessage: null,
-    successMessage: null,
-  });
+  const successMessage = req.session.successMessage || null;
+  req.session.successMessage = null;
+  res.render("delete", { successMessage });
 });
+
 app.post("/delete", productController.deleteProduct);
 
 app.get("/:file", isAuthenticated, userController.otherfiles);
