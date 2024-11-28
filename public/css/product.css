@@ -80,6 +80,16 @@
     background-color: #d88c18; 
 }
 
+/* Error and success message styles */
+.error-message,
+.success-message {
+    text-align: center; /* Center text horizontally */
+    color: inherit; /* Use the color already applied (red/green) */
+    font-weight: bold; /* Make messages more prominent */
+    margin-bottom: 1em;
+}
+
+
 /* Adjusting for smaller screens */
 @media (max-width: 480px) {
     .product-form {

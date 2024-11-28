@@ -71,12 +71,17 @@ app.get("/addProduct", isAuthenticated, (req, res) => {
 app.post("/addProduct", productController.addProduct);
 
 // Route to render the delete.ejs page
+// app.get("/delete", isAuthenticated, (req, res) => {
+//   const successMessage = req.session.successMessage || null;
+//   req.session.successMessage = null;
+//   res.render("delete", { successMessage });
+// });
 app.get("/delete", isAuthenticated, (req, res) => {
-  const successMessage = req.session.successMessage || null;
-  req.session.successMessage = null;
-  res.render("delete", { successMessage });
+  res.render("delete", {
+    errorMessage: null,
+    successMessage: null,
+  });
 });
-
 app.post("/delete", productController.deleteProduct);
 
 // Route to render the update.ejs page

@@ -64,10 +64,12 @@ module.exports = {
     }
   },
   updateProduct: async function (req, res) {
-    const { pID, pName, pDescription, pCategory, pStock, pPrice } = req.body;
+    const { pId, pName, pDescription, pCategory, pStock, pPrice } = req.body;
+
+    console.log("Received data:", req.body); // Log the request data
 
     try {
-      const product = await productModel.findOne({ pId: pID });
+      const product = await productModel.findOne({ pId: pId });
 
       if (!product) {
         console.log("Product not found!");
@@ -77,12 +79,13 @@ module.exports = {
         });
       }
 
-      // Update fields only if new values are provided
       if (pName) product.pName = pName;
       if (pDescription) product.pDescription = pDescription;
       if (pCategory) product.pCategory = pCategory;
       if (pStock) product.pStock = parseInt(pStock);
       if (pPrice) product.pPrice = parseFloat(pPrice);
+
+      console.log("Updating product:", product);
 
       await product.save();
 
