@@ -29,6 +29,7 @@ app.set("view engine", "ejs");
 
 // This lines to specify where are the models
 require("./models/user");
+require("./models/product");
 
 //DB Connection with the url to connect with the name of the DB
 mongoose.connect("mongodb://127.0.0.1:27017/techmania", {
@@ -46,19 +47,21 @@ function isAuthenticated(req, res, next) {
     return next(); // If the user is logged it will continue with the request
   }
   req.session.errorMessage = "Please Login!";
-  return res.redirect("/"); // Redirige al inicio // If the user is not logged it redirect it to the home page
+  return res.redirect("/"); // Redirige al inicio / If the user is not logged it redirect it to the home page
 }
 
 // To indicate where are the controllers
 const userController = require("./controllers/userController");
 const productController = require("./controllers/productController");
-const user = require("./models/user");
-const product = require("./models/product");
+// const user = require("./models/user");
+// const product = require("./models/product");
 
+// To print the type of request that we are receiving
 app.use((req, res, next) => {
   console.log(`Request received: ${req.method} ${req.url}`);
   next();
 });
+
 
 app.get("/", userController.homepage);
 
