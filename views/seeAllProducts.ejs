@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Products</title>
+    <link rel="stylesheet" href="/css/seeAllProducts.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Logo container -->
+      <div class="logo-container">
+        <a href="/"><img src="/images/Logo.png" alt="Website Logo" /></a>
+      </div>
+      <!-- Header -->
+      <header>
+        <h1>Our Products</h1>
+        <p>Explore our diverse range of products below.</p>
+      </header>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+        <% products.forEach(product => { %>
+        <div class="product-card">
+          <!-- Product Image -->
+          <img
+            src="<%= product.pImage %>"
+            alt="<%= product.pName %>"
+            class="product-image"
+          />
+
+          <!-- Product Details -->
+          <div class="product-info">
+            <h2 class="product-name"><%= product.pName %></h2>
+            <p class="product-category">Category: <%= product.pCategory %></p>
+            <p class="product-stock">Stock: <%= product.pStock %> items</p>
+            <p class="product-price">$<%= product.pPrice %></p>
+            <p class="product-description"><%= product.pDescription %></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
