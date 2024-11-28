@@ -8,7 +8,6 @@ var session = require("express-session");
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Session settings
@@ -22,7 +21,6 @@ app.use(
 );
 
 //This line to specify where are the static file we are using
-app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
 
 // This two lines to specify where are the views and what template we are using
@@ -41,7 +39,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/techmania", {
 const db = mongoose.connection;
 db.once("open", function () {
   console.log("We are connected..");
-
+});
 
 // Middleware to check if the user is logged
 function isAuthenticated(req, res, next) {
@@ -55,8 +53,8 @@ function isAuthenticated(req, res, next) {
 // To indicate where are the controllers
 const userController = require("./controllers/userController");
 const productController = require("./controllers/productController");
-// const user = require("./models/user");
-// const product = require("./models/product");
+const user = require("./models/user");
+const product = require("./models/product");
 
 // To print the type of request that we are receiving
 app.use((req, res, next) => {
@@ -64,56 +62,10 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.get("/", userController.homepage);
-
-app.get("/addProduct", isAuthenticated, (req, res) => {
-  const successMessage = req.session.successMessage || null;
-  req.session.successMessage = null;
-  res.render("create", { successMessage });
-});
-
 app.post("/addProduct", productController.addProduct);
-
-// Route to render the delete.ejs page
-// app.get("/delete", isAuthenticated, (req, res) => {
-//   const successMessage = req.session.successMessage || null;
-//   req.session.successMessage = null;
-//   res.render("delete", { successMessage });
-// });
-app.get("/delete", isAuthenticated, (req, res) => {
-  res.render("delete", {
-    errorMessage: null,
-    successMessage: null,
-  });
-});
 app.post("/delete", productController.deleteProduct);
-
-// Route to render the update.ejs page
-app.get("/update", isAuthenticated, (req, res) => {
-  res.render("update", {
-    errorMessage: null,
-    successMessage: null,
-  });
-});
-
-// Route to handle product updates
 app.post("/update", productController.updateProduct);
-
-app.get("/:file", isAuthenticated, userController.otherfiles);
-app.get("/:folder/:file", isAuthenticated, userController.otherpages);
-app.post("/validate", userController.validation);
-
-//get the addProduct link
-
-app.get("/:file", function (req, res) {
-  const filePath = path.join(__dirname, req.params.file);
-  return res.render(req.params.file);
-});
-
-app.get("/", userController.homepage);
-
-app.get("/:file", isAuthenticated, userController.otherfiles);
 app.get("/:folder/:file", isAuthenticated, userController.otherpages);
 app.post("/validate", userController.validation);
 
@@ -136,11 +88,6 @@ app.get("/seeAllProducts", async (req, res) => {
     res.status(500).send("Unable to fetch products. Please try again later.");
   }
 });
-
-app.post("/delete", productController.deleteProduct);
-app.get("/:file", isAuthenticated, userController.otherfiles);
-app.get("/:folder/:file", isAuthenticated, userController.otherpages);
-app.post("/validate", userController.validation);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

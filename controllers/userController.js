@@ -9,36 +9,42 @@ module.exports = {
         const errorMessage = req.session.errorMessage || null;
         req.session.errorMessage = null;
         if (username) {
-            return res.redirect('/views/options.html');
+            return res.render("seeAllProducts.ejs");
         }
         return res.render('index.ejs', { errorMessage: errorMessage , successMessage: null });
     },
 
-    // Method to get other web pages
-    otherfiles: function(req, res) {
-        console.log("Other files ");
-        const filePath = path.join(__dirname,"../",req.params.file);
-        console.log(filePath);
-        return res.sendFile(filePath,function(error){
-            if(error){
-                return res.status(404).send("File Not Found!"); 
-            }
-        })
-    },
-
-    
-
     otherpages: function(req, res) {
-        console.log("Other pages ");
+        console.log("Other pages");
 
+        // Obtén el nombre de la carpeta y archivo de los parámetros
+        const folder = req.params.folder;
+        const file = req.params.file;
+    
+        // Verifica si la extensión es .html o .ejs
+        const fileExtension = path.extname(file);
+        console.log(fileExtension);
+        if (fileExtension === '.html') {
+            // Ruta absoluta del archivo HTML
+            const filePath = path.join(__dirname, "../", folder, file);
+            console.log(filePath);
+    
+            return res.sendFile(filePath, function (error) {
+                if (error) {
+                    return res.status(404).send("File Not Found!");
+                }
+            });
+    
+        } else if (fileExtension === '.ejs') {
+            const viewName = path.basename(file,'.ejs'); // Nombre de la vista sin extensión
+            console.log(`Renderizando EJS: ${file}`);
 
-        const filePath = path.join(__dirname,"../",req.params.folder, req.params.file);
-        console.log(filePath);
-        return res.sendFile(filePath,function(error){
-            if(error){
-                return res.status(404).send("File Not Found!"); 
-            }
-        })
+            return res.render(file,);
+    
+        } else {
+            // Si el archivo no tiene una extensión soportada
+            return res.status(400).send("Unsupported file type!");
+        }
     },
     
 

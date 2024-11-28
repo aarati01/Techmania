@@ -8,45 +8,38 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/join.css" />
     <title>Update a Product</title>
   </head>
   <body>
+    <div class="main-container">
+      <!-- Top Left Image Container -->
+      <div class="logo-container">
+        <a href="/views/options.html"
+          ><img src="/images/Logo.png" alt="Website Logo"
+        /></a>
+      </div>
+
     <div class="container">
       <div class="newProduct">
         <div class="upper">
           <h1>Update New Product</h1>
-          
-
+        
         <!-- Success message section -->
         <% if (successMessage) { %>
           <div class="success-message" style="color: green; margin-bottom: 1em;">
             <p><%= successMessage %></p>
           </div>
         <% } %>
-
-          <!-- <img
-            src="/images/Logo.png"
-            height="100%"
-            width="100%"
-            alt="logo"/> -->
             
         </div>
-        
-          
           <div class="addUser">
             <form method="post" action="/update">
               <div class="entry-group">
                 <div class="entry-field" id="pIdField">
                   <i class="fa-solid fa-barcode"></i>
                   <label for="pId">Product ID</label>
-                  <input
-                    id="pId"
-                    name="pId"
-                    type="number"
-                    placeholder="Product ID"
-                    required
-                  />
+                  <input id="pId" name="pId" type="number" placeholder="Product ID" required/>
                 </div>
 
                 <div class="entry-field" id="pNameField">
