@@ -56,18 +56,31 @@ const productController = require("./controllers/productController");
 const user = require("./models/user");
 const product = require("./models/product");
 
-// To print the type of request that we are receiving
-app.use((req, res, next) => {
-  console.log(`Request received: ${req.method} ${req.url}`);
-  next();
+app.get("/", userController.homepage);
+app.get("/views/options.html", isAuthenticated, (req,res) => {
+  const filePath = path.join(__dirname, 'views', 'options.html');
+  res.sendFile(filePath);
 });
 
-app.get("/", userController.homepage);
-app.post("/addProduct", productController.addProduct);
-app.post("/delete", productController.deleteProduct);
-app.post("/update", productController.updateProduct);
-app.get("/:folder/:file", isAuthenticated, userController.otherpages);
-app.post("/validate", userController.validation);
+app.get("/addProduct", isAuthenticated, (req, res) => {
+  const successMessage = req.session.successMessage || null;
+  req.session.successMessage = null;
+  res.render("create", { successMessage });
+});
+
+app.get("/delete", isAuthenticated, (req, res) => {
+  res.render("delete", {
+    errorMessage: null,
+    successMessage: null,
+  });
+});
+
+app.get("/update", isAuthenticated, (req, res) => {
+  res.render("update", {
+    errorMessage: null,
+    successMessage: null,
+  });
+});
 
 //route to render seeAllProducts page
 app.get("/seeAllProducts", async (req, res) => {
@@ -88,6 +101,24 @@ app.get("/seeAllProducts", async (req, res) => {
     res.status(500).send("Unable to fetch products. Please try again later.");
   }
 });
+
+app.post("/addProduct", productController.addProduct);
+app.post("/delete", productController.deleteProduct);
+app.post("/update", productController.updateProduct);
+app.post("/validate", userController.validation);
+
+app.post('/logout', (req, res) => {
+  // Elimina la sesión actual
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+      return res.status(500).send("Error al cerrar sesión.");
+    }
+    // Redirige al usuario a la página de inicio de sesión o inicio
+    res.redirect('/');
+  });
+});
+
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

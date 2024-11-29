@@ -15,6 +15,13 @@
         /></a>
       </div>
 
+      <!-- Header -->
+      <header>
+        <h1>Delete a Product</h1>
+        <p>Are you sure you want to delete this product?</p>
+      </header>
+    </div>
+
     <!-- Delete Product Form -->
     <form action="/delete" method="post" class="product-form">
       <!-- Error and success messages -->
@@ -27,10 +34,6 @@
         <p><%= successMessage %></p>
       </div>
       <% } %>
-      <h2 class="product-heading">Delete Product</h2>
-      <label for="pID" class="product-header-label">
-        Are you sure you want to delete this Product?
-      </label>
       <div class="product-form-body">
         <label for="pID" class="product-label">Enter Product ID:</label>
         <input type="text" id="pID" name="pID" class="product-input" required />

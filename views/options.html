@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Options Page</title>
-    <link rel="stylesheet" href="/css/join.css" />
+    <link rel="stylesheet" href="/css/options.css" />
   </head>
   <body>
     <div class="main-container">
@@ -15,14 +15,22 @@
         /></a>
       </div>
 
+      <!-- Logout Button -->
+      <div class="logout-container">
+        <form action="/logout" method="POST">
+          <button type="submit" class="button">Logout</button>
+        </form>
+      </div>
 
-
-      <h1>Product Management Options</h1>
+      <!-- Header -->
+      <header>
+        <h1>Product Management Options</h1>
+      </header>
 
       <div class="options-container">
         <!-- Buttons for different CRUD operations -->
         <a href="/seeAllProducts" class="button">See All Products<a>
-        <a href="/views/create.ejs" class="button">Add Product</a>
+        <a href="/addProduct" class="button">Add Product</a>
         <a href="/update" class="button">Update Product</a>
         <a href="/delete" class="button">Delete Product</a>
       </div>
