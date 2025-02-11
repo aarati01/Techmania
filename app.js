@@ -4,22 +4,33 @@ var mongoose = require("mongoose");
 var path = require("path");
 var bodyParser = require("body-parser");
 var session = require("express-session");
-
+const MongoStore = require("connect-mongo");
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Session settings
+// app.use(
+//   session({
+//     secret: "TechManiaKey123",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { secure: false },
+//   })
+// );
+// Set up session middleware with MongoDB store
 app.use(
   session({
-    secret: "TechManiaKey123",
+    secret: process.env.SECRET_MONGOSESSION || 123456789, // Change to a secure key
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URL, // MongoDB URI
+      ttl: 14 * 24 * 60 * 60, // Session expiration (optional)
+    }),
   })
 );
-
 //This line to specify where are the static file we are using
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -32,10 +43,13 @@ require("./models/user");
 require("./models/product");
 
 //DB Connection with the url to connect with the name of the DB
-mongoose.connect(process.env.DATABASE_URL||"mongodb://127.0.0.1:27017/techmania", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/techmania",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 const db = mongoose.connection;
 db.once("open", function () {
   console.log("We are connected..");
@@ -137,9 +151,8 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something went wrong!");
 });
 
-/*
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running at port ${process.env.PORT}`);
-});
-*/
+// app.listen(process.env.PORT || 3000, () => {
+//   console.log(`Server is running at port ${process.env.PORT}`);
+// });
+
 module.exports = app;
