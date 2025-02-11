@@ -71,7 +71,10 @@ Open the Application:
 
 Navigate to http://localhost:3000 in your browser.
 🌍 Live Demo
-A live demo of the project is available at: TechMania E-Commerce
+
+![alt text](image.png)
+![alt text](image-1.png)
+A live demo of the project is available at: [TechMania E-Commerce](https://techmania-eta.vercel.app/)
 
 💡 Contributing
 Feel free to fork the repository and submit pull requests for improvements. For any issues or questions, open an issue on GitHub.
