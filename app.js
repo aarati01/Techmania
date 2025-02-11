@@ -32,7 +32,7 @@ require("./models/user");
 require("./models/product");
 
 //DB Connection with the url to connect with the name of the DB
-mongoose.connect("mongodb://127.0.0.1:27017/techmania", {
+mongoose.connect(process.env.DATABASE_URL||"mongodb://127.0.0.1:27017/techmania", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
