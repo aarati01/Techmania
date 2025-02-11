@@ -137,6 +137,6 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something went wrong!");
 });
 
-app.listen(port || 3000, () => {
-  console.log(`Server is running at port ${port}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running at port ${process.env.PORT}`);
 });
