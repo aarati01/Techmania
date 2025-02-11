@@ -15,6 +15,13 @@
         /></a>
       </div>
 
+    <!-- Logout Button -->
+    <div class="logout-container">
+      <form action="/logout" method="POST">
+        <button type="submit" class="button">Logout</button>
+      </form>
+    </div>  
+
       <!-- Header -->
       <header>
         <h1>Delete a Product</h1>
@@ -36,7 +43,7 @@
       <% } %>
       <div class="product-form-body">
         <label for="pID" class="product-label">Enter Product ID:</label>
-        <input type="text" id="pID" name="pID" class="product-input" required />
+        <input type="text" id="pID" name="pID" class="product-input" value="<%= product ? product.pId : '' %>" required />
       </div>
       <button type="submit" class="product-btn">Delete</button>
     </form>

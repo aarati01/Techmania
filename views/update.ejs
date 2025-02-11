@@ -17,6 +17,13 @@
       <div class="logo-container">
         <a href="/"><img src="/images/Logo.png" alt="Website Logo" /></a>
       </div>
+
+    <!-- Logout Button -->
+    <div class="logout-container">
+      <form action="/logout" method="POST">
+        <button type="submit" class="button">Logout</button>
+      </form>
+    </div>  
       <!-- Header -->
       <header>
         <h1>Update a Product</h1>
@@ -39,43 +46,43 @@
                 <div class="entry-field" id="pIdField">
                   <i class="fa-solid fa-barcode"></i>
                   <label for="pId">Product ID</label>
-                  <input id="pId" name="pId" type="number" placeholder="Product ID" required/>
+                  <input id="pId" name="pId" type="number" placeholder="Product ID"  value="<%= product ? product.pId : '' %>" required/>
                 </div>
 
                 <div class="entry-field" id="pNameField">
                   <i class="fa-solid fa-cogs"></i>
                   <label for="pName">Product Name</label>
-                  <input id="pName" name="pName" type="text" placeholder="Product Name" required/>
+                  <input id="pName" name="pName" type="text" placeholder="Product Name" value="<%= product ? product.pName : '' %>" required/>
                 </div>
 
                 <div class="entry-field" id="pDescriptionField">
                   <i class="fa-solid fa-info-circle"></i>
                   <label for="pDescription">Product Description</label>
-                  <textarea id="pDescription" name="pDescription" placeholder="Product Description" required></textarea>
+                  <textarea id="pDescription" name="pDescription" placeholder="Product Description" required><%= product ? product.pDescription : '' %></textarea>
                 </div>
 
                 <div class="entry-field" id="pCategoryField">
                   <i class="fa-solid fa-tags"></i>
                   <label for="pCategory">Category</label>
-                  <input id="pCategory" name="pCategory" type="text" placeholder="Category" required/>
+                  <input id="pCategory" name="pCategory" type="text" placeholder="Category" value="<%= product ? product.pCategory : '' %>" required/>
                 </div>
 
                 <div class="entry-field" id="pStockField">
                   <i class="fa-solid fa-cubes"></i>
                   <label for="pStock">Stock Quantity</label>
-                  <input id="pStock" name="pStock" type="number" placeholder="Stock Quantity" required/>
+                  <input id="pStock" name="pStock" type="number" placeholder="Stock Quantity" value="<%= product ? product.pStock : '' %>" required/>
                 </div>
 
                 <div class="entry-field" id="pPriceField">
                   <i class="fa-solid fa-dollar-sign"></i>
                   <label for="pPrice">Price</label>
-                  <input id="pPrice" name="pPrice" type="number" placeholder="Price" required/>
+                  <input id="pPrice" name="pPrice" type="number" placeholder="Price" value="<%= product ? product.pPrice : '' %>" required/>
                 </div>
 
                 <div class="entry-field" id="pImageField">
                   <i class="fa-solid fa-image"></i>
                   <label for="pImage">Product Image URL</label>
-                  <input id="pImage" name="pImage" type="text" placeholder="Image URL" required/>
+                  <input id="pImage" name="pImage" type="text" placeholder="Image URL"  value="<%= product ? product.pImage : '' %>" required/>
                 </div>
 
                 <div class="product-buttons">

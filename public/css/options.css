@@ -2,11 +2,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9; /* Retaining the existing background color */
   text-align: center;
-  padding: 50px;
-}
-
-* {
-  /* border: 2px solid black; */ /* Keeping this commented as per your original code */
+  margin-top: 10%; /* Retaining your margin-top */
+  color: #333; 
 }
 
 h1 {
@@ -14,10 +11,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-body {
-  margin-top: 10%; /* Retaining your margin-top */
-  color: #333; /* Retaining the text color */
-}
 
 .options-container {
   display: flex;
@@ -58,3 +51,15 @@ body {
   border-radius: 10px; /* Adding rounded corners to the image */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adding a shadow effect */
 }
+.logout-container {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+}
+
+.logout-container .button {
+  padding: 10px 20px; /* Adjust padding to fit text properly */
+  width: auto; /* Let the width adjust based on content */
+  font-size: 14px; /* Slightly smaller font for better fit */
+}
+

@@ -47,7 +47,7 @@ function isAuthenticated(req, res, next) {
     return next(); // If the user is logged it will continue with the request
   }
   req.session.errorMessage = "Please Login!";
-  return res.redirect("/"); // Redirige al inicio / If the user is not logged it redirect it to the home page
+  return res.redirect("/"); // If the user is not logged it redirect it to the home page
 }
 
 // To indicate where are the controllers
@@ -56,65 +56,70 @@ const productController = require("./controllers/productController");
 const user = require("./models/user");
 const product = require("./models/product");
 
+// Defining Routes
+
+// To get the home page
 app.get("/", userController.homepage);
+
+// To get Options Page
 app.get("/views/options.html", isAuthenticated, (req,res) => {
   const filePath = path.join(__dirname, 'views', 'options.html');
   res.sendFile(filePath);
 });
 
+// To get create page
 app.get("/addProduct", isAuthenticated, (req, res) => {
   const successMessage = req.session.successMessage || null;
   req.session.successMessage = null;
   res.render("create", { successMessage });
 });
 
+//To get delete page
 app.get("/delete", isAuthenticated, (req, res) => {
   res.render("delete", {
     errorMessage: null,
     successMessage: null,
+    product: null,
   });
 });
 
+// To get delete by Id page from seeAllproducts Page
+app.get("/delete/:id", isAuthenticated, productController.deleteById);
+
+// To get the update Page
 app.get("/update", isAuthenticated, (req, res) => {
   res.render("update", {
     errorMessage: null,
     successMessage: null,
+    product: null,
   });
 });
 
+// To get update gy Id Page from seeAllproducts Page
+app.get("/update/:id", isAuthenticated, productController.updateById);
+
 //route to render seeAllProducts page
-app.get("/seeAllProducts", async (req, res) => {
-  try {
-    const products = await product.find();
+app.get("/seeAllProducts", isAuthenticated, productController.seeAllProducts);
 
-    if (products.length === 0) {
-      return res.render("seeAllProducts", {
-        products: [],
-        message: "No products available at the moment.",
-      });
-    }
+//Routes to get seeAllProducts Page aplying filters
+app.get("/products/findbycategory",isAuthenticated,productController.getbyCategory);
+app.get("/products/findbyQuantity",isAuthenticated,productController.getbyQuantity);
 
-    // Pass the fetched products to the EJS template
-    res.render("seeAllProducts", { products, message: null });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Unable to fetch products. Please try again later.");
-  }
-});
-
+// Post routes once the forms are submitted
 app.post("/addProduct", productController.addProduct);
 app.post("/delete", productController.deleteProduct);
 app.post("/update", productController.updateProduct);
 app.post("/validate", userController.validation);
 
+// Post method for log out button
 app.post('/logout', (req, res) => {
-  // Elimina la sesión actual
+  // To destroy actual user session
   req.session.destroy((err) => {
     if (err) {
-      console.error("Error al cerrar sesión:", err);
-      return res.status(500).send("Error al cerrar sesión.");
+      console.error("Error to close session:", err);
+      return res.status(500).send("Error to close session.");
     }
-    // Redirige al usuario a la página de inicio de sesión o inicio
+    // Redirects to the login page
     res.redirect('/');
   });
 });

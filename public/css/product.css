@@ -1,7 +1,5 @@
 /* General body styles */
 .product-body {
-    
-
     width: 100%;
     height: 100vh;
     background-image: url(../images/background.png);
@@ -88,6 +86,18 @@
     font-weight: bold; /* Make messages more prominent */
     margin-bottom: 1em;
 }
+/* Added by Madhavi for try */
+.logout-container {
+    position: absolute;
+    top: 10px; /* Aligns the button to the top */
+    right: 10px; /* Aligns the button to the right */
+  }
+  
+  .logout-container .button {
+    padding: 10px 20px; /* Adjust padding to fit text properly */
+    width: auto; /* Let the width adjust based on content */
+    font-size: 14px; /* Slightly smaller font for better fit */
+  }
 
 
 /* Adjusting for smaller screens */

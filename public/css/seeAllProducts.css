@@ -1,7 +1,4 @@
 /* General Reset */
-* {
-  /* border: 2px solid red; */
-}
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -87,15 +84,112 @@ header p {
   color: #28a745;
 }
 
-.logo-container {
-  position: absolute;
-  top: 10px; /* Positioning the image container at the top */
-  left: 10px; /* Aligning the image container to the left */
-}
+
 
 .logo-container img {
   width: 100px; /* Setting a fixed width for the image */
   height: auto; /* Ensuring the image scales proportionally */
   border-radius: 10px; /* Adding rounded corners to the image */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adding a shadow effect */
+}
+
+
+.logout-container {
+  position: absolute;
+  top: 10px; /* Aligns the button to the top */
+  right: 20px; /* Aligns the button to the right */
+}
+
+.logout-container .button {
+  padding: 10px 20px; 
+  width: auto; 
+  font-size: 14px;
+  background-color: yellow;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.update-button {
+  margin-left: 30%;
+  margin-bottom: 2%;
+  display: inline-block;
+  width: 20%;
+  padding: 15px 30px;
+  font-size: 16px;
+  background-color: yellow;
+  color: black;
+  text-decoration: none;
+  border:1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.update-button:hover, .logout-container .button:hover {
+  background-color: #d88c18;
+}
+
+.delete-button {
+  margin-left: 30%;
+  margin-bottom: 2%;
+  display: inline-block;
+  width: 20%;
+  padding: 15px 30px;
+  font-size: 16px;
+  background-color: red;
+  color: black;
+  text-decoration: none;
+  border:1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.delete-button:hover {
+  background-color: #d88c18;
+}
+
+.filter-option .submit-button {
+  background-color: yellow;
+  color: black;
+  text-decoration: none;
+  border:1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 8px;
+}
+
+.filter-option {
+  margin-bottom: 3%;
+  margin-left: 1.5%;
+}
+
+.filter-option .submit-button:hover {
+  background-color: #d88c18;
+}
+
+@media (min-width: 768px) {
+
+  .logo-container {
+    position: absolute;
+    top: 10px; /* Positioning the image container at the top */
+    left: 10px; /* Aligning the image container to the left */
+  }
+
+  .filter-option {
+    width: 48%;
+    float: left;
+    margin-bottom: 3%;
+    margin-left: 1.5%;
+  }
+  
+  .products-grid {
+    clear: both;
+  }
+  
 }

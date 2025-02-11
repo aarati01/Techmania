@@ -1,7 +1,4 @@
 /* General Reset */
-* {
-    /* border: 2px solid red; */
-  }
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -87,12 +84,6 @@
     color: #28a745;
   }
   
-  .logo-container {
-    position: absolute;
-    top: 10px; /* Positioning the image container at the top */
-    left: 10px; /* Aligning the image container to the left */
-  }
-  
   .logo-container img {
     width: 100px; /* Setting a fixed width for the image */
     height: auto; /* Ensuring the image scales proportionally */
@@ -109,11 +100,10 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     width: 399px;
-    height: 35vh;
 }
 
 .product-form-body {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     align-items: center;
     display: flex;
 }
@@ -176,9 +166,8 @@
     width: 98vw;
     max-height: 100vh; 
     overflow-y: auto;  
-      position: absolute;
+    position: absolute;
     overflow: auto;
-
     background-position: center;
     background-size: cover;
     display: flex;
@@ -187,17 +176,15 @@
 }
 
 .newProduct {
-    max-width: 400px;
-    height: fit-content;
-    width: 100%;
-    background-color: #fff;
-    padding: 2em;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    margin-top: 100px;
-    margin-bottom: 0%;
-    top: 200px;
+  margin: 0 auto;
+  max-width: 400px;
+  height: fit-content;
+  width: 100%;
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 0%;
 }
 
 .newProduct h1 {
@@ -295,4 +282,37 @@
 .entry-field textarea {
     height: 150px;
     resize: vertical;
+}
+
+.logout-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.logout-container .button {
+  padding: 10px 20px; 
+  width: auto; 
+  font-size: 14px;
+  background-color: yellow;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.logout-container .button:hover {
+  background-color: #d88c18;
+}
+
+@media (min-width: 768px) {
+
+  .logo-container {
+    position: absolute;
+    top: 10px; /* Positioning the image container at the top */
+    left: 10px; /* Aligning the image container to the left */
+  }
+  
 }

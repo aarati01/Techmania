@@ -12,11 +12,39 @@
       <div class="logo-container">
         <a href="/"><img src="/images/Logo.png" alt="Website Logo" /></a>
       </div>
+
+    <!-- Logout Button -->
+    <div class="logout-container">
+      <form action="/logout" method="POST">
+        <button type="submit" class="button">Logout</button>
+      </form>
+    </div>  
       <!-- Header -->
       <header>
         <h1>Our Products</h1>
         <p>Check all your products inventory below.</p>
       </header>
+
+      <!-- Filters -->
+      <div class="filters">
+        <!-- Filter by Category-->
+         <div class="filter-option" id="filter1">
+            <h2>Filter by Category</h2>
+            <form action="/products/findbycategory" method="GET">
+                <input type="text" name="pCategory" placeholder="Search" />
+                <input type="submit" class="submit-button" value="Search"/>
+            </form>
+         </div>
+        
+         <div class="filter-option" id="filter2">
+          <!-- Filter by Category-->
+          <h2>Filter by Quantity</h2>
+          <form action="/products/findbyQuantity" method="GET">
+              <input type="text" name="pQuantity" placeholder="Search" />
+              <input type="submit" class="submit-button" value="Search"/>
+          </form>
+         </div>
+      </div>
 
       <!-- Products Grid -->
       <div class="products-grid">
@@ -36,6 +64,14 @@
             <p class="product-stock">Stock: <%= product.pStock %> items</p>
             <p class="product-price">$<%= product.pPrice %></p>
             <p class="product-description"><%= product.pDescription %></p>
+          </div>
+
+          <div>
+            <a href="/update/<%= product.pId %>" class="update-button">Update</a>
+          </div>
+
+          <div>
+            <a href="/delete/<%= product.pId %>" class="delete-button">Delete</a>
           </div>
         </div>
         <% }) %>
