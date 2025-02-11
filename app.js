@@ -62,8 +62,8 @@ const product = require("./models/product");
 app.get("/", userController.homepage);
 
 // To get Options Page
-app.get("/views/options.html", isAuthenticated, (req,res) => {
-  const filePath = path.join(__dirname, 'views', 'options.html');
+app.get("/views/options.html", isAuthenticated, (req, res) => {
+  const filePath = path.join(__dirname, "views", "options.html");
   res.sendFile(filePath);
 });
 
@@ -102,8 +102,16 @@ app.get("/update/:id", isAuthenticated, productController.updateById);
 app.get("/seeAllProducts", isAuthenticated, productController.seeAllProducts);
 
 //Routes to get seeAllProducts Page aplying filters
-app.get("/products/findbycategory",isAuthenticated,productController.getbyCategory);
-app.get("/products/findbyQuantity",isAuthenticated,productController.getbyQuantity);
+app.get(
+  "/products/findbycategory",
+  isAuthenticated,
+  productController.getbyCategory
+);
+app.get(
+  "/products/findbyQuantity",
+  isAuthenticated,
+  productController.getbyQuantity
+);
 
 // Post routes once the forms are submitted
 app.post("/addProduct", productController.addProduct);
@@ -112,7 +120,7 @@ app.post("/update", productController.updateProduct);
 app.post("/validate", userController.validation);
 
 // Post method for log out button
-app.post('/logout', (req, res) => {
+app.post("/logout", (req, res) => {
   // To destroy actual user session
   req.session.destroy((err) => {
     if (err) {
@@ -120,16 +128,15 @@ app.post('/logout', (req, res) => {
       return res.status(500).send("Error to close session.");
     }
     // Redirects to the login page
-    res.redirect('/');
+    res.redirect("/");
   });
 });
-
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something went wrong!");
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000/");
+app.listen(port || 3000, () => {
+  console.log(`Server is running at port ${port}`);
 });
